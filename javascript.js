@@ -7,20 +7,12 @@ function getComputerChoice() {
         hand = "paper";
     } else {hand = "scissors";}
         
-    return [choice, hand]
+    return hand;
 }
 
 function getHumanChoice() {
     let hand = prompt("Rock \nPaper \nScissors").toLowerCase();
-    let choice;
-    if (hand == "rock") {
-        choice = 0;
-    } else if (hand == "paper") {
-        choice = 1;
-    } else if (hand == "scissors") {
-        choice = 2;
-    }
-    return [choice, hand];
+    return hand;
 }
 
 
@@ -30,16 +22,16 @@ function playGame() {
     let rounds = 5;
 
     function playRound(humanChoice, computerChoice) {
-        console.log("Human: ", humanChoice[1]);
-        console.log("Computer: ", computerChoice[1]);
+        console.log("Human: ", humanChoice);
+        console.log("Computer: ", computerChoice);
 
-        if (humanChoice[0] > computerChoice[0]) {
+        if (humanChoice == "rock" && computerChoice == "scissors" || humanChoice == "paper" && computerChoice == "rock" || humanChoice == "scissors" && computerChoice == "paper") {
             console.log("You win");
             ++humanScore;
-        } else if (humanChoice[0] == computerChoice[0]) {
+        } else if (humanChoice == computerChoice) {
             console.log("It's a Draw");
         } else { 
-            console.log(`You Lose! ${computerChoice[1]} beats ${humanChoice[1]}`);
+            console.log(`You Lose! ${computerChoice} beats ${humanChoice}`);
             ++computerScore;
         }
         console.log("Human Score: ", humanScore);
